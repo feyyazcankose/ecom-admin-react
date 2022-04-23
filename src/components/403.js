@@ -2,7 +2,7 @@ import React from 'react'
 
 const Abort = () => {
   return (
-    <div>404</div>
+    <div>403</div>
   )
 }
 

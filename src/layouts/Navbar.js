@@ -1,7 +1,30 @@
 import React from "react";
 import Notifications from "./Notifications";
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
+import axios from "axios";
+import Swal from "sweetalert2";
 const Navbar = () => {
+  const navigate = useNavigate();
+  async function onLogout(e){
+    e.preventDefault();
+    const csrf = await axios.get('/sanctum/csrf-cookie');
+      await axios.post("api/logout").then(res=>{
+        if(res.status==200)
+      {
+          localStorage.removeItem("auth_token");
+          localStorage.removeItem("auth_name");
+          
+          // Swal({
+          //   title: "Çıkış Başarılı",
+          //   icon: "success",
+          //   button: "Tamam",
+          // });
+  
+          navigate('/login');
+      }
+    });	 
+  }
+
   return (
     <>
       <div className="app-header-inner">
@@ -107,9 +130,9 @@ const Navbar = () => {
                       <hr className="dropdown-divider" />
                     </li>
                     <li>
-                      <NavLink className="dropdown-item" to="/logout">
+                      <button className="dropdown-item" onClick={onLogout}>
                         Çıkış Yap
-                      </NavLink>
+                      </button>
                     </li>
                   </ul>
                 </div>
