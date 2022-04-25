@@ -12,11 +12,14 @@ import Profile from "../components/profile/Profile";
 
 import ProductsList from "../components/product/ProductsList";
 import ProductAdd from "../components/product/ProductAdd";
+import ProductUpdate from "../components/product/ProductUpdate";
+
+
 
 import Users from "../components/user/Users";
 
-import CatagoryList from "../components/catagory/CatagoryList";
-import CatagoryAdd from "../components/catagory/CatagoryAdd";
+import CatagoryList from "../components/category/CatagoryList";
+import CatagoryAdd from "../components/category/CatagoryAdd";
 
 import Comment from "../components/comment/Comment";
 
@@ -46,6 +49,8 @@ const routes = [
     //Product
     {path:'/products' ,component: ProductsList},
     {path:'/product/add' ,component: ProductAdd},
+    {path:'/product/update/:id' ,component: ProductUpdate},
+ 
     
     //Coupons
     {path:'/coupons' ,component: CouponList},
